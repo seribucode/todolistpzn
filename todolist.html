@@ -21,7 +21,7 @@
     </table>
   </form>
 
-  <h1>Todolist Masse</h1>
+  <h1>Todolist Brokuhhh</h1>
 
   <table>
     <thead>
@@ -38,60 +38,6 @@
     </tbody>
   </table>
 
-  <script>
-    const todolist = [
-      'Turuuuu',
-      'Bobokkk',
-      'Mangan',
-      'Rebahannn'
-    ]
-    
-    function clearTodo(){
-      const todolistBody = document.getElementById('todolistBody');
-      while(todolistBody.firstChild){
-        todolistBody.removeChild(todolistBody.firstChild)
-      }
-    }  
-
-    //Menampilkan Todolist dgn DOM
-    function displayTodo(){
-      clearTodo()
-
-      for (let i = 0; i< todolist.length; i++){
-        const todo = todolist[i]
-
-        const tr = document.createElement('tr');
-        const tbutton = document.createElement('td');
-        tr.appendChild(tbutton);
-
-        const buttonDone = document.createElement('input')
-        buttonDone.type = 'button'
-        buttonDone.value = 'Done'
-        tbutton.appendChild(buttonDone)
-
-        const tdTodo = document.createElement('td');
-        tdTodo.textContent = todo;
-        tr.appendChild(tdTodo);
-
-        const todolistBody = document.getElementById('todolistBody');
-        todolistBody.appendChild(tr);
-      
-      }
-    }
-
-    //ambil nilai array
-    document.forms['todoForm'].onsubmit = function (event){
-      event.preventDefault()
-
-      const todo = document.forms['todoForm']['todo'].value;
-      todolist.push(todo)
-
-      document.forms['todoForm'].reset();
-
-      console.info(todolist)
-      displayTodo()
-    }
-    displayTodo()
-  </script>
+  <script src="todolist.js"></script>
 </body>
 </html>
