@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todolist Ala Alfin</title>
+</head>
+<body>
+  <form name="todoForm">
+    <table>
+      <tbody>
+        <tr>
+          <td><label for="todo">Todo:</label></td>
+          <td><input type="text" id="todo" name="todo"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="add"></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+  <h1>Todolist Masse</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Filter:</th>
+        <th><input type="text" name="search" id="search"></th>
+      </tr>
+    </thead>
+    <tbody id="todolistBody">
+      <tr>
+        <td><input type="button" value="Done"></td>
+        <td>todo description</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const todolist = [
+      'Turuuuu',
+      'Bobokkk',
+      'Mangan',
+      'Rebahannn'
+    ]
+    
+    function clearTodo(){
+      const todolistBody = document.getElementById('todolistBody');
+      while(todolistBody.firstChild){
+        todolistBody.removeChild(todolistBody.firstChild)
+      }
+    }  
+
+    //Menampilkan Todolist dgn DOM
+    function displayTodo(){
+      clearTodo()
+
+      for (let i = 0; i< todolist.length; i++){
+        const todo = todolist[i]
+
+        const tr = document.createElement('tr');
+        const tbutton = document.createElement('td');
+        tr.appendChild(tbutton);
+
+        const buttonDone = document.createElement('input')
+        buttonDone.type = 'button'
+        buttonDone.value = 'Done'
+        tbutton.appendChild(buttonDone)
+
+        const tdTodo = document.createElement('td');
+        tdTodo.textContent = todo;
+        tr.appendChild(tdTodo);
+
+        const todolistBody = document.getElementById('todolistBody');
+        todolistBody.appendChild(tr);
+      
+      }
+    }
+
+    //ambil nilai array
+    document.forms['todoForm'].onsubmit = function (event){
+      event.preventDefault()
+
+      const todo = document.forms['todoForm']['todo'].value;
+      todolist.push(todo)
+
+      document.forms['todoForm'].reset();
+
+      console.info(todolist)
+      displayTodo()
+    }
+    displayTodo()
+  </script>
+</body>
+</html>
